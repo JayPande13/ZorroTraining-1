@@ -1,0 +1,31 @@
+{
+  "form": [
+    {
+      "name": "Jay",
+      "age": "22",
+      "phone": "463645644",
+      "email": "jmaypande@gmail.com",
+      "nationality": "Indian",
+      "house": "76",
+      "locality": "Shivalik Vihar",
+      "city": "haldwani",
+      "country": "India",
+      "feedback": "good",
+      "id": 1
+    },
+    {
+      "name": "Rohit",
+      "age": "12",
+      "phone": "",
+      "email": "",
+      "nationality": "Others",
+      "house": "",
+      "locality": "",
+      "city": "",
+      "country": "London",
+      "feedback": "Very Nice UI",
+      "bond": true,
+      "id": 2
+    }
+  ]
+}

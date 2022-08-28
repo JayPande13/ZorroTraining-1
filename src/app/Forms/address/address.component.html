@@ -1,0 +1,28 @@
+<form nz-form [formGroup]="addForm">
+    <nz-form-item>
+      <nz-form-label [nzSpan]="9" nzFor="h_no">{{appconstants.table_house}}</nz-form-label>
+      <nz-form-control [nzSpan]="6">
+        <input nz-input h_no="h_no" type="text" id="h_no" formControlName="house">
+      </nz-form-control>
+    </nz-form-item >
+    <nz-form-item>
+        <nz-form-label [nzSpan]="9" nzFor="locality">{{appconstants.table_locality}}</nz-form-label>
+        <nz-form-control [nzSpan]="6">
+          <input nz-input h_no="locality" type="text" id="locality" formControlName="locality">
+        </nz-form-control>
+      </nz-form-item >
+    <nz-form-item>
+      <nz-form-label [nzSpan]="9" nzFor="city">{{appconstants.table_city}}</nz-form-label>
+      <nz-form-control [nzSpan]="6">
+        <input nz-input h_no="city" type="text" id="city" formControlName="city">
+      </nz-form-control>
+    </nz-form-item >
+    <nz-form-item>
+      <nz-form-label [nzSpan]="9" nzFor="country">{{appconstants.table_country}}</nz-form-label>
+      <nz-form-control [nzSpan]="6">
+        <input nz-input h_no="country" type="text" id="country" formControlName="country">
+      </nz-form-control>
+    </nz-form-item >
+   
+   
+  </form>

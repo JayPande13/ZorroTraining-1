@@ -1,0 +1,133 @@
+<nz-layout>
+  <nz-header>
+    <div class="logo"></div>
+    <ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu">
+      <li nz-menu-item>nav 1</li>
+      <li nz-menu-item nzSelected>nav 2</li>
+      <li nz-menu-item>nav 3</li>
+    </ul>
+  </nz-header>
+  <nz-content class="outer-content">
+    <nz-layout class="inner-layout">
+      <nz-sider nzWidth="200px" nzTheme="light">
+        <ul nz-menu nzMode="inline" class="sider-menu">
+          <li nz-submenu nzOpen nzTitle="subnav 1" nzIcon="user">
+            <ul>
+              <li nz-menu-item nzSelected>option1</li>
+              <li nz-menu-item>option2</li>
+              <li nz-menu-item>option3</li>
+              <li nz-menu-item>option4</li>
+            </ul>
+          </li>
+          <li nz-submenu nzTitle="subnav 2" nzIcon="laptop">
+            <ul>
+              <li nz-menu-item>option5</li>
+              <li nz-menu-item>option6</li>
+              <li nz-menu-item>option7</li>
+              <li nz-menu-item>option8</li>
+            </ul>
+          </li>
+          <li nz-submenu nzTitle="subnav 3" nzIcon="notification">
+            <ul>
+              <li nz-menu-item>option9</li>
+              <li nz-menu-item>option10</li>
+              <li nz-menu-item>option11</li>
+              <li nz-menu-item>option12</li>
+            </ul>
+          </li>
+        </ul>
+      </nz-sider>
+      <nz-content class="inner-content">
+        <nz-steps [nzCurrent]="pageNum" (nzIndexChange)="Steperchange($event)">
+          <nz-step
+            nzTitle="{{ appconstants.steptitle_1 }}"
+           
+          ></nz-step>
+          <nz-step
+            nzTitle="{{ appconstants.steptitle_2 }}"
+           
+          ></nz-step>
+          <nz-step
+            [nzDisabled]="groupForm.controls['bond'].value === false"
+            nzTitle="{{ appconstants.steptitle_3 }}"
+            
+          ></nz-step>
+        </nz-steps>
+
+        <div class="steps-content">
+          <div [ngSwitch]="pageNum">
+            <ng-template [ngSwitchCase]="appconstants.Page_1">
+              <app-details [dataForm]="groupForm"> </app-details>
+            </ng-template>
+            <ng-template [ngSwitchCase]="appconstants.Page_2">
+              <app-address [addForm]="groupForm"> </app-address>
+            </ng-template>
+            <ng-template [ngSwitchCase]="appconstants.Page_3">
+              <app-feedback [feedform]="groupForm"> </app-feedback>
+            </ng-template>
+          </div>
+        </div>
+
+        <button nz-button nzType="default" (click)="pre()" *ngIf="pageNum > 0">
+          <span>{{ appconstants.previous }}</span>
+        </button>
+        <button
+          nz-button
+          nzType="default"
+          (click)="next()"
+          [disabled]="
+            pageNum === appconstants.Page_2 &&
+            groupForm.controls['bond'].value === false
+          "
+          *ngIf="pageNum < 2"
+        >
+          <span>{{ appconstants.next }}</span>
+        </button>
+        <button
+          nz-button
+          nzType="primary"
+          [disabled]="groupForm.invalid"
+          (click)="done()"
+          *ngIf="pageNum === 2"
+        >
+          <span>{{ appconstants.submit }}</span>
+        </button>
+
+        <div class="container-2">
+          <nz-table #basicTable [nzData]="form_data" [nzShowPagination]="false">
+            <thead>
+              <tr>
+                <th>{{ appconstants.table_name }}</th>
+                <th>{{ appconstants.table_age }}</th>
+                <th>{{ appconstants.table_country }}</th>
+                <th>{{ appconstants.table_nationality }}</th>
+                <th>{{ appconstants.table_feedback }}</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of basicTable.data">
+                <td>{{ data.name }}</td>
+                <td>{{ data.age }}</td>
+                <td>{{ data.country }}</td>
+                <td>{{ data.nationality }}</td>
+                <td>{{ data.feedback }}</td>
+                <td>
+                  <button
+                    nz-button
+                    nzType="primary"
+                    nzDanger
+                    (click)="delete(data.id)"
+                  >
+                    {{ appconstants.text_delete }}
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </nz-table>
+        </div>
+      </nz-content>
+    </nz-layout>
+    <nz-footer>Design by Jay</nz-footer>
+  </nz-content>
+</nz-layout>

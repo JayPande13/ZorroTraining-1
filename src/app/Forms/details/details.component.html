@@ -1,0 +1,61 @@
+<form nz-form [formGroup]="dataForm">
+  <nz-form-item>
+    <nz-form-label [nzSpan]="9" nzFor="name">{{appconstants.table_name}}</nz-form-label>
+    <nz-form-control [nzSpan]="6">
+      <input nz-input name="name" type="text" id="name" formControlName="name">
+      <span class="danger" *ngIf="!dataForm.controls['name'].valid 
+       && (dataForm.controls['name'].touched || dataForm.controls['name'].dirty)">
+        Name is required
+      </span>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="9" nzFor="age">{{appconstants.table_age}}</nz-form-label>
+    <nz-form-control [nzSpan]="6">
+      <input nz-input name="age" type="text" id="age" formControlName="age">
+      <span class="danger" *ngIf="dataForm.controls['age'].invalid 
+       && (dataForm.controls['age'].touched || dataForm.controls['age'].dirty)">
+        <span *ngIf="dataForm.controls['age'].errors?.['required']">
+          Age is required
+        </span>
+        <span *ngIf="dataForm.controls['age'].errors?.['maxlength']">Only 2 Digits</span>
+      </span>
+
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="9" nzFor="email">{{appconstants.table_email}}</nz-form-label>
+    <nz-form-control [nzSpan]="6">
+      <input nz-input name="email" type="email" id="email" formControlName="email">
+      <span class="danger" *ngIf="dataForm.controls['email'].invalid
+         && (dataForm.controls['email'].touched || dataForm.controls['email'].dirty)">Enter a Valid Email</span>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="9" nzFor="phone">{{appconstants.table_phone}}</nz-form-label>
+    <nz-form-control [nzSpan]="6">
+      <input nz-input name="phone" type="text" id="phone" formControlName="phone">
+      <span class="danger" *ngIf="dataForm.controls['phone'].invalid 
+       && dataForm.controls['phone'].touched ">
+        Enter Valid Mobile Number
+      </span>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="9" nzFor="nationality">{{appconstants.table_nationality}}</nz-form-label>
+    <nz-form-control [nzSpan]="6">
+      <nz-select nzPlaceHolder="Choose your Nationality" formControlName="nationality">
+        <nz-option *ngFor="let nation of nationality" [nzValue]="nation" [nzLabel]="nation"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item >
+   
+    <nz-form-control [nzSpan]="25">
+      <label nz-checkbox formControlName="bond">Agree to our Conditions</label>
+    </nz-form-control>
+  </nz-form-item>
+ 
+
+
+</form>
